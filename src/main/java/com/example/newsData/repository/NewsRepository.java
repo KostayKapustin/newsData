@@ -18,7 +18,7 @@ public interface NewsRepository extends JpaRepository<NewsData, Long> {
     @Query(value = "SELECT DISTINCT subjectMatter FROM new_data", nativeQuery = true)
     List<String> findDistinctSubjectMatter();
 
-    @Query(value = "select  n.subject_matter from new_data n where n.source_name = :source_name",
+    @Query(value = "select DISTINCT n.subject_matter from new_data n where n.source_name = :source_name",
             nativeQuery = true)
     List<String> findDistinctSubjectMatterInSource(@Param("source_name") String source_name);
 
@@ -28,6 +28,9 @@ public interface NewsRepository extends JpaRepository<NewsData, Long> {
     @Query(value = "select n.news from new_data n where n.source_name = :source_name", nativeQuery = true)
     List<String> findNewsInSource(Pageable pageable, @Param("source_name") String source_name);
 
-    @Query(value = "select n.news from new_data n where n.subjectMatter = :subjectMatter", nativeQuery = true)
-    List<String> findNewsInSubjectMatter(Pageable pageable, @Param("subjectMatter") String subjectMatter);
+    @Query(value = "select n.news from new_data n where n.subject_matter = :subjectMatter", nativeQuery = true)
+    List<String> findNewsInSubjectMatter(Pageable pageable,  @Param("subjectMatter") String subjectMatter);
+
+    @Query(value = "select n.news from new_data n where n.subject_matter = :subjectMatter", nativeQuery = true)
+    List<String> getNewsInSubjectMatterNoPageable(@Param("subjectMatter") String subjectMatter);
 }

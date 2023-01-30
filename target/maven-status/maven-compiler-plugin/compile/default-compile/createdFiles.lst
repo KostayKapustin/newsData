@@ -1,0 +1,10 @@
+com\example\newsData\dto\NewsDataDto.class
+com\example\newsData\controller\RequestBuilder.class
+com\example\newsData\repository\NewsRepository.class
+com\example\newsData\NewsDataApplication.class
+com\example\newsData\model\NewsData.class
+com\example\newsData\service\NewsServiceImpl$1.class
+com\example\newsData\service\NewsServiceImpl.class
+com\example\newsData\controller\NewsController.class
+com\example\newsData\mapper\NewsDataMapper.class
+com\example\newsData\service\NewsService.class

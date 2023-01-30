@@ -7,7 +7,11 @@ import java.util.List;
 public interface NewsService {
     NewsDataDto addNewsData(NewsDataDto newsDataDto);
 
+    NewsDataDto addNewsDataFromFile();
+
     List<NewsDataDto> getListNewsDataDto(int from, int size);
+
+    void getNewDataStatistics();
 
     List<String> getSource();
 

@@ -4,6 +4,7 @@ import com.example.newsData.dto.NewsDataDto;
 import com.example.newsData.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,19 @@ public class NewsController {
                                    HttpServletRequest request) {
         log.info("Получить новый запрос: {}", RequestBuilder.getStringFromRequest(request));
         return newsService.addNewsData(newsDataDto);
+    }
+
+    @PostMapping("/file")
+    public NewsDataDto addNewsDataFromFile(HttpServletRequest request) {
+        log.info("Получить новый запрос: {}", RequestBuilder.getStringFromRequest(request));
+        return newsService.addNewsDataFromFile();
+    }
+
+    @GetMapping("/statistics")
+    @Scheduled(cron = "12 12 12 * * *")
+    public void getNewDataStatistics() {
+        log.info("Получить новый запрос статистики");
+        newsService.getNewDataStatistics();
     }
 
     @GetMapping()
