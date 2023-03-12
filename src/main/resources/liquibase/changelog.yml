@@ -1,0 +1,36 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: DEV-1
+      author: kostya
+      changes:
+        - createTable:
+            tableName: newsData
+            remarks: новостные данные
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_newData
+                    nullable: false
+              - column:
+                  name: source_name
+                  type: varchar(255)
+                  remarks: источник
+                  constraints:
+                    nullable: false
+              - column:
+                  name: subjectMatter
+                  type: varchar(512)
+                  remarks: тематика
+                  constraints:
+                    nullable: false
+              - column:
+                  name: news
+                  type: varchar(512)
+                  remarks: новости
+                  constraints:
+                    nullable: false
